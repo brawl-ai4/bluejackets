@@ -1368,6 +1368,468 @@
   .os3 { bottom:14px; left:14px;  animation: sparkPulse 1.8s ease-in-out infinite 0.9s; }
   .os4 { bottom:14px; right:14px; animation: sparkPulse 1.8s ease-in-out infinite 1.35s; }
 
+  /* ===== SCORES / SEASON HUB ===== */
+  .scores-section {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(0,17,51,0.95) 0%, rgba(0,38,84,0.4) 100%);
+    border-top: 3px solid var(--red);
+    border-bottom: 3px solid var(--red);
+    overflow: hidden;
+  }
+
+  .scores-section::before {
+    content: 'SCORES';
+    position: absolute;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 300px;
+    color: rgba(0,38,84,0.08);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .scores-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .scores-header {
+    margin-bottom: 50px;
+  }
+
+  /* Live dot */
+  .live-dot-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .live-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--red);
+    animation: livePulse 1.2s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  @keyframes livePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(206,17,38,0.8); }
+    50% { box-shadow: 0 0 0 8px rgba(206,17,38,0); }
+  }
+
+  .live-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.5em;
+    color: var(--red);
+    text-transform: uppercase;
+  }
+
+  /* Standing banner */
+  .standing-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    background: var(--navy);
+    border: 1px solid rgba(206,17,38,0.4);
+    padding: 30px 20px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    animation: bannerGlow 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes bannerGlow {
+    0% { box-shadow: 0 0 20px rgba(0,38,84,0.3), inset 0 0 30px rgba(0,38,84,0.1); }
+    100% { box-shadow: 0 0 40px rgba(206,17,38,0.2), inset 0 0 60px rgba(206,17,38,0.05); }
+  }
+
+  .standing-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+    animation: shinePass 4s linear infinite;
+  }
+
+  @keyframes shinePass {
+    0% { left: -60%; }
+    100% { left: 140%; }
+  }
+
+  .standing-item {
+    text-align: center;
+    padding: 0 30px;
+    flex: 1;
+    min-width: 80px;
+  }
+
+  .standing-item-big .standing-val {
+    font-size: 80px !important;
+    color: var(--gold) !important;
+    text-shadow: 0 0 20px rgba(255,215,0,0.6) !important;
+  }
+
+  .standing-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--white);
+    line-height: 1;
+    animation: valCount 2s ease-out forwards;
+  }
+
+  .pts-val { animation: ptsPulse 2s ease-in-out infinite alternate; }
+
+  @keyframes ptsPulse {
+    0% { text-shadow: 0 0 10px rgba(255,215,0,0.5); }
+    100% { text-shadow: 0 0 30px rgba(255,215,0,1), 0 0 60px rgba(255,215,0,0.4); }
+  }
+
+  .standing-lbl {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--silver);
+    text-transform: uppercase;
+    margin-top: 6px;
+    opacity: 0.7;
+  }
+
+  .standing-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(162,170,173,0.2);
+    flex-shrink: 0;
+  }
+
+  /* Playoff bar */
+  .playoff-bar-wrap {
+    margin-bottom: 50px;
+  }
+
+  .playoff-bar-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .playoff-bar-track {
+    height: 8px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 4px;
+    position: relative;
+    overflow: visible;
+  }
+
+  .playoff-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--navy), var(--red));
+    border-radius: 4px;
+    animation: barGrow 2s ease-out forwards;
+    transform-origin: left;
+  }
+
+  @keyframes barGrow {
+    0% { width: 0 !important; }
+  }
+
+  .playoff-bar-marker {
+    position: absolute;
+    top: -4px;
+    width: 4px; height: 16px;
+    background: var(--gold);
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--gold);
+    transform: translateX(-50%);
+  }
+
+  .playoff-bar-sublabel {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    margin-top: 10px;
+    color: var(--silver);
+  }
+
+  /* Next game */
+  .next-game-card {
+    background: linear-gradient(135deg, rgba(0,38,84,0.9), rgba(0,17,51,0.95));
+    border: 2px solid var(--red);
+    padding: 40px;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+    animation: nextGamePulse 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes nextGamePulse {
+    0% { border-color: var(--red); box-shadow: 0 0 20px rgba(206,17,38,0.2); }
+    100% { border-color: #ff4444; box-shadow: 0 0 50px rgba(206,17,38,0.5); }
+  }
+
+  .next-game-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.4em;
+    color: var(--red);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .next-game-tag::before {
+    content: '';
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+    animation: livePulse 1.2s infinite;
+  }
+
+  .next-game-matchup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .ng-team {
+    text-align: center;
+    flex: 1;
+  }
+
+  .ng-city {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.4em;
+    color: var(--silver);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .ng-abbr {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 80px);
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .ng-cbj {
+    color: var(--red);
+    text-shadow: 0 0 20px rgba(206,17,38,0.6);
+    animation: cbjGlow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes cbjGlow {
+    0% { text-shadow: 0 0 10px rgba(206,17,38,0.4); }
+    100% { text-shadow: 0 0 30px rgba(206,17,38,1), 0 0 60px rgba(206,17,38,0.4); }
+  }
+
+  .ng-vs {
+    text-align: center;
+    flex-shrink: 0;
+    padding: 0 30px;
+  }
+
+  .ng-vs-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: rgba(162,170,173,0.4);
+    letter-spacing: 0.2em;
+  }
+
+  .ng-date {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    color: var(--white);
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .ng-time {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-top: 4px;
+  }
+
+  .ng-arena {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--silver);
+    opacity: 0.5;
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+
+  /* Results */
+  .recent-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.3em;
+    color: var(--silver);
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(162,170,173,0.15);
+    padding-bottom: 12px;
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+  }
+
+  .result-card {
+    background: var(--navy);
+    border: 1px solid rgba(0,38,84,0.5);
+    padding: 20px 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: default;
+    animation: rosterFadeIn 0.5s ease forwards;
+  }
+
+  .result-card:hover {
+    transform: translateY(-4px);
+    z-index: 5;
+  }
+
+  .result-win { border-color: rgba(0,200,100,0.3); }
+  .result-loss { border-color: rgba(206,17,38,0.3); }
+
+  .result-win:hover { box-shadow: 0 12px 30px rgba(0,200,100,0.2); }
+  .result-loss:hover { box-shadow: 0 12px 30px rgba(206,17,38,0.2); }
+
+  .result-outcome {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    line-height: 1;
+  }
+
+  .result-win .result-outcome { color: #00c864; text-shadow: 0 0 15px rgba(0,200,100,0.6); }
+  .result-loss .result-outcome { color: var(--red); text-shadow: 0 0 15px rgba(206,17,38,0.6); }
+
+  .result-score {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-top: 6px;
+  }
+
+  .result-opp {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: var(--silver);
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+
+  .result-date {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(162,170,173,0.4);
+    margin-top: 4px;
+  }
+
+  .result-bar {
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 3px; width: 100%;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  .result-win .result-bar { background: #00c864; }
+  .result-loss .result-bar { background: var(--red); }
+  .result-card:hover .result-bar { transform: scaleX(1); }
+
+  /* Upcoming */
+  .upcoming-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .upcoming-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: var(--navy);
+    border: 1px solid rgba(0,38,84,0.5);
+    padding: 20px 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .upcoming-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--red);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+  }
+
+  .upcoming-item:hover::before { transform: scaleY(1); }
+  .upcoming-item:hover { background: rgba(0,38,84,0.9); padding-left: 36px; }
+
+  .upcoming-date {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--red);
+    letter-spacing: 0.1em;
+    min-width: 70px;
+  }
+
+  .upcoming-opp {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+    flex: 1;
+    letter-spacing: 0.05em;
+  }
+
+  .upcoming-time {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--silver);
+  }
+
+  .upcoming-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: var(--navy);
+    background: var(--silver);
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+
   /* ===== ROSTER SECTION ===== */
   .roster-section {
     position: relative;
@@ -1758,6 +2220,182 @@
   </div>
 </div>
 
+<!-- ===== LIVE SCORES / SEASON HUB ===== -->
+<div class="scores-section">
+  <div class="scores-inner">
+
+    <!-- Header -->
+    <div class="scores-header">
+      <div class="live-dot-wrap"><span class="live-dot"></span><span class="live-label">LIVE DATA</span></div>
+      <div class="section-label" style="margin-bottom:0;">2025–26 Season</div>
+      <div class="section-title" style="margin-bottom:0; font-size:clamp(40px,6vw,80px);">SCOREBOARD &amp;<br><span style="color:var(--red);">SEASON HUB</span></div>
+    </div>
+
+    <!-- Current Standing Banner -->
+    <div class="standing-banner">
+      <div class="standing-item">
+        <div class="standing-val">38</div>
+        <div class="standing-lbl">Wins</div>
+      </div>
+      <div class="standing-divider"></div>
+      <div class="standing-item">
+        <div class="standing-val">27</div>
+        <div class="standing-lbl">Losses</div>
+      </div>
+      <div class="standing-divider"></div>
+      <div class="standing-item">
+        <div class="standing-val">12</div>
+        <div class="standing-lbl">OT Losses</div>
+      </div>
+      <div class="standing-divider"></div>
+      <div class="standing-item standing-item-big">
+        <div class="standing-val pts-val">88</div>
+        <div class="standing-lbl">Points</div>
+      </div>
+      <div class="standing-divider"></div>
+      <div class="standing-item">
+        <div class="standing-val">4th</div>
+        <div class="standing-lbl">Metro</div>
+      </div>
+      <div class="standing-divider"></div>
+      <div class="standing-item">
+        <div class="standing-val">235</div>
+        <div class="standing-lbl">Goals For</div>
+      </div>
+      <div class="standing-divider"></div>
+      <div class="standing-item">
+        <div class="standing-val">236</div>
+        <div class="standing-lbl">Goals Against</div>
+      </div>
+    </div>
+
+    <!-- Playoff race bar -->
+    <div class="playoff-bar-wrap">
+      <div class="playoff-bar-label">PLAYOFF RACE — 2 POINTS OUT OF A SPOT</div>
+      <div class="playoff-bar-track">
+        <div class="playoff-bar-fill" style="width: 88%;"></div>
+        <div class="playoff-bar-marker" style="left: 90%;"></div>
+      </div>
+      <div class="playoff-bar-sublabel"><span style="color:var(--silver);">CBJ: 88 pts</span> &nbsp;·&nbsp; <span style="color:var(--gold);">Bubble: 90 pts</span></div>
+    </div>
+
+    <!-- NEXT GAME -->
+    <div class="next-game-card">
+      <div class="next-game-tag">NEXT GAME</div>
+      <div class="next-game-matchup">
+        <div class="ng-team ng-away">
+          <div class="ng-city">DETROIT</div>
+          <div class="ng-abbr">DET</div>
+        </div>
+        <div class="ng-vs">
+          <div class="ng-vs-text">VS</div>
+          <div class="ng-date">TUE · APR 8</div>
+          <div class="ng-time">7:00 PM ET</div>
+          <div class="ng-arena">LITTLE CAESARS ARENA</div>
+        </div>
+        <div class="ng-team ng-home">
+          <div class="ng-city">COLUMBUS</div>
+          <div class="ng-abbr ng-cbj">CBJ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECENT RESULTS -->
+    <div class="recent-label">RECENT RESULTS</div>
+    <div class="results-grid">
+
+      <div class="result-card result-loss">
+        <div class="result-outcome">L</div>
+        <div class="result-score">1 – 2</div>
+        <div class="result-opp">vs WPG</div>
+        <div class="result-date">Apr 4</div>
+        <div class="result-bar"></div>
+      </div>
+
+      <div class="result-card result-loss">
+        <div class="result-outcome">L</div>
+        <div class="result-score">2 – 5</div>
+        <div class="result-opp">vs CAR</div>
+        <div class="result-date">Apr 3</div>
+        <div class="result-bar"></div>
+      </div>
+
+      <div class="result-card result-win">
+        <div class="result-outcome">W</div>
+        <div class="result-score">4 – 3</div>
+        <div class="result-opp">vs BOS</div>
+        <div class="result-date">Mar 31</div>
+        <div class="result-bar"></div>
+      </div>
+
+      <div class="result-card result-loss">
+        <div class="result-outcome">L</div>
+        <div class="result-score">1 – 3</div>
+        <div class="result-opp">@ SJS</div>
+        <div class="result-date">Mar 28</div>
+        <div class="result-bar"></div>
+      </div>
+
+      <div class="result-card result-loss">
+        <div class="result-outcome">L</div>
+        <div class="result-score">2 – 4</div>
+        <div class="result-opp">@ LAK</div>
+        <div class="result-date">Mar 26</div>
+        <div class="result-bar"></div>
+      </div>
+
+      <div class="result-card result-loss">
+        <div class="result-outcome">L</div>
+        <div class="result-score">1 – 3</div>
+        <div class="result-opp">@ ANA</div>
+        <div class="result-date">Mar 25</div>
+        <div class="result-bar"></div>
+      </div>
+
+      <div class="result-card result-win">
+        <div class="result-outcome">W</div>
+        <div class="result-score">5 – 2</div>
+        <div class="result-opp">vs MTL</div>
+        <div class="result-date">Mar 22</div>
+        <div class="result-bar"></div>
+      </div>
+
+      <div class="result-card result-win">
+        <div class="result-outcome">W</div>
+        <div class="result-score">3 – 1</div>
+        <div class="result-opp">vs PHI</div>
+        <div class="result-date">Mar 20</div>
+        <div class="result-bar"></div>
+      </div>
+
+    </div>
+
+    <!-- UPCOMING SCHEDULE -->
+    <div class="recent-label" style="margin-top:60px;">UPCOMING GAMES</div>
+    <div class="upcoming-list">
+      <div class="upcoming-item">
+        <div class="upcoming-date">APR 8</div>
+        <div class="upcoming-opp">@ Detroit Red Wings</div>
+        <div class="upcoming-time">7:00 PM ET</div>
+        <div class="upcoming-tag">ROAD</div>
+      </div>
+      <div class="upcoming-item">
+        <div class="upcoming-date">APR 10</div>
+        <div class="upcoming-opp">@ Buffalo Sabres</div>
+        <div class="upcoming-time">7:00 PM ET</div>
+        <div class="upcoming-tag">ROAD</div>
+      </div>
+      <div class="upcoming-item">
+        <div class="upcoming-date">APR 12</div>
+        <div class="upcoming-opp">@ Montreal Canadiens</div>
+        <div class="upcoming-time">7:00 PM ET</div>
+        <div class="upcoming-tag">ROAD</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- ===== STATS SECTION ===== -->
 <div style="padding: 0 40px; position:relative; z-index:1; max-width:1400px; margin: 80px auto;">
   <div class="section-label">The Numbers</div>
@@ -2013,7 +2651,7 @@
         <div class="record-cat">All-Time Goals</div>
         <div class="record-holder">Cam Atkinson</div>
       </div>
-      <div class="record-value">392</div>
+      <div class="record-value">213</div>
     </div>
     <div class="record-item">
       <div>
@@ -2027,7 +2665,7 @@
         <div class="record-cat">Goalie Wins</div>
         <div class="record-holder">Sergei Bobrovsky</div>
       </div>
-      <div class="record-value">392</div>
+      <div class="record-value">213</div>
     </div>
     <div class="record-item">
       <div>
